@@ -7,7 +7,7 @@ module.exports = {
 		return `https://www.breakingbadapi.com/api/${resource}`;
 	},
 
-	getCharacterURL: characterId => {
+	getProfileURL: characterId => {
 		return `characters/${characterId}`;
 	},
 

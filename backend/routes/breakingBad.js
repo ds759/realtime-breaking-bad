@@ -14,16 +14,18 @@ const updatePageWithRandomCharacter = () => {
 
 const createCharacter = async () => {
 	const characterId = getRandomCharacterId();
-	const characterBio = await queryAPI(config.getCharacterURL(characterId));
-	const { quote } = await queryAPI(config.getQuoteURL(characterBio));
-	const { deathCount: kills } = await queryAPI(config.getKillURL(characterBio));
-	return { characterBio, quote, kills };
+	return getCharacterDetails(characterId);
 };
 
 const getRandomCharacterId = () => {
-	const FIRST_CHARACTER = 1;
-	const LAST_CHARACTER = 54;
-	return Math.floor(Math.random() * LAST_CHARACTER) + FIRST_CHARACTER;
+	return Math.floor(Math.random() * (END_ID = 54)) + (FIRST_ID = 1);
+};
+
+const getCharacterDetails = async characterId => {
+	const bio = await queryAPI(config.getProfileURL(characterId));
+	const { quote } = await queryAPI(config.getQuoteURL(bio));
+	const { deathCount: kills } = await queryAPI(config.getKillURL(bio));
+	return { bio, quote, kills };
 };
 
 const queryAPI = async resource => {
