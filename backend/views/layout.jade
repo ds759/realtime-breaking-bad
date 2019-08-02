@@ -1,0 +1,15 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  script(src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js')
+  script.
+    console.log('running script')
+    var socket = io('http://localhost:3000');
+    socket.emit('connection', { my: 'data' });
+    socket.on('breaking bad', function (data) {
+      console.log(data);
+    });
+  body
+    block content
