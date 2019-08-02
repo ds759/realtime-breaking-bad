@@ -1,6 +1,8 @@
 module.exports = {
 	namespace: "breaking bad",
 
+	UPDATE_TIME: 2000,
+
 	createEndpoint: resource => {
 		return `https://www.breakingbadapi.com/api/${resource}`;
 	},
@@ -18,6 +20,4 @@ module.exports = {
 	}
 };
 
-const encode = name => {
-	return name.replace(/ /g, "+");
-};
+const encode = name => name.replace(/\s/g, "+");
