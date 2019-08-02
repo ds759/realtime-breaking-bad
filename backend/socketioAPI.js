@@ -1,15 +1,10 @@
-var socket_io = require("socket.io");
-var io = socket_io();
-var socketApi = {};
+const io = require("socket.io")();
 
-socketApi.io = io;
-
-io.on("connection", function(socket) {
-	console.log("A user connected");
-});
-
-socketApi.push = (namespace, data) => {
-	io.sockets.emit(namespace, data);
+var socketioAPI = {
+	io: io
 };
 
-module.exports = socketApi;
+io.on("connection", socket => console.log("A user connected"));
+socketioAPI.push = (namespace, data) => io.sockets.emit(namespace, data);
+
+module.exports = socketioAPI;

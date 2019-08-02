@@ -18,7 +18,7 @@ const createCharacter = async () => {
 };
 
 const getRandomCharacterId = () => {
-	return Math.floor(Math.random() * (END_ID = 54)) + (FIRST_ID = 1);
+	return Math.floor(Math.random() * (LAST_ID = 54)) + (FIRST_ID = 1);
 };
 
 const getCharacterDetails = async characterId => {
